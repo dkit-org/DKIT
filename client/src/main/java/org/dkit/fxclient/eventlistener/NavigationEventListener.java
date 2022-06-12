@@ -4,12 +4,14 @@ package org.dkit.fxclient.eventlistener;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import lombok.RequiredArgsConstructor;
+import org.dkit.fxclient.common.ViewLoader;
 import org.dkit.fxclient.constants.Screen;
-import org.dkit.fxclient.controller.ViewLoader;
-import org.dkit.fxclient.events.CloseScreenEvent;
-import org.dkit.fxclient.events.NavigationEvent;
-import org.dkit.fxclient.events.StageReadyEvent;
-import org.springframework.beans.factory.annotation.Value;
+import org.dkit.fxclient.event.CloseScreenEvent;
+import org.dkit.fxclient.event.NavigationEvent;
+import org.dkit.fxclient.event.StageReadyEvent;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
@@ -17,54 +19,68 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class NavigationEventListener  {
+@RequiredArgsConstructor
+public class NavigationEventListener {
 
-    private final KeyboardEventListener keyboardEventListener;
-    private final BasicKeyboardEventListener basicKeyboardEventListener;
-    private final String applicationTitle;
     private final ViewLoader viewLoader;
+    private final ApplicationContext applicationContext;
+    private Map<Screen, Scene> screens = new HashMap<>();
+    private Map<Screen, Stage> stages = new HashMap<>();
     private Stage mainStage;
 
-    private Map<String, Stage>stages = new HashMap<>();
 
-    public NavigationEventListener(
-            KeyboardEventListener keyboardEventListener, BasicKeyboardEventListener basicKeyboardEventListener, @Value("${application.ui.title}") String applicationTitle,
-            ViewLoader viewLoader){
-        this.keyboardEventListener = keyboardEventListener;
-        this.basicKeyboardEventListener = basicKeyboardEventListener;
-        this.applicationTitle = applicationTitle;
-        this.viewLoader = viewLoader;
+
+    @EventListener(StageReadyEvent.class)
+    public void handleStageReaderEvent(StageReadyEvent event) {
+        var stage = event.getStage();
+        this.mainStage = stage;
+        var root = this.viewLoader.<Parent>load(Screen.LOGIN.toString());
+        var scene = new Scene(root, 1200, 600);
+        scene.getStylesheets().add(0, "/themes/base.css");
+        this.screens.put(Screen.LOGIN, scene);
+        //scene.setOnKeyPressed(keyboardEventListener);
+        this.mainStage.setScene(scene);
+        this.mainStage.show();
     }
 
 
-    @EventListener
+    @EventListener(NavigationEvent.class)
     public void handleNavigationEvent(NavigationEvent event) {
-        switch (event.getScreen()){
-            case LOGIN: navigateToLoginScreen(); break;
-            case DASHBOARD: navigateToDashboardScreen(); break;
-            case ACTIONS: navigateToActionsScreen(); break;
+        // check if the screen was cached
+        if(screens.containsKey(event.getScreen())){
+            this.mainStage.setScene(screens.get(event.getScreen()));
+            return;
+        }
+
+        switch (event.getScreen()) {
+            case LOGIN:
+                navigateToLoginScreen();
+                break;
+            case DASHBOARD:
+                navigateToDashboardScreen();
+                break;
+            case ACTIONS:
+                navigateToActionStage();
+                break;
         }
     }
 
 
-    private void navigateToActionsScreen() {
-        var stage = new Stage();
-        this.stages.put(Screen.ACTIONS.toString(), stage);
-        stage.setTitle(this.applicationTitle);
-        stage.initOwner(this.mainStage);
-        var root = this.viewLoader.<Parent>load(Screen.ACTIONS.toString());
-        var scene = new Scene(root);
-        scene.getStylesheets().add(0, "/themes/base.css");
-        scene.setOnKeyPressed(this.basicKeyboardEventListener);
-        stage.setScene(scene);
-        stage.show();
+    @EventListener(CloseScreenEvent.class)
+    public void handleCloseScreenEvent(CloseScreenEvent event) {
+        var stage = this.stages.get(event.getScreen().toString());
+        if (stage != null) {
+            stage.hide();
+        }
     }
+
 
     private void navigateToDashboardScreen() {
         var root = this.viewLoader.<Parent>load(Screen.DASHBOARD.toString());
         var scene = new Scene(root, 1200, 600);
         scene.getStylesheets().add(0, "/themes/base.css");
-        scene.setOnKeyPressed(keyboardEventListener);
+        this.screens.put(Screen.DASHBOARD, scene);
+        scene.setOnKeyPressed(applicationContext.getBean(KeyboardEventListener.class));
         this.mainStage.setScene(scene);
     }
 
@@ -75,24 +91,24 @@ public class NavigationEventListener  {
         this.mainStage.setScene(scene);
     }
 
-    @EventListener
-    public void handleStageReadyEvent(StageReadyEvent event){
-        this.mainStage = event.getStage();
-        var root = this.viewLoader.<Parent>load(event.getInitialScreen().toString());
-        var scene = new Scene(root, 1200, 600);
-        scene.getStylesheets().add(0, "/themes/base.css");
-        this.mainStage.setScene(scene);
-        this.mainStage.setTitle(this.applicationTitle);
-        this.mainStage.show();
-    }
 
-
-    @EventListener
-    public void handleCloseScreenEvent(CloseScreenEvent event){
-        var stage = this.stages.get(event.getScreen().toString());
-        if(stage != null){
-            stage.close();
+    private void navigateToActionStage() {
+        if(this.stages.containsKey(Screen.ACTIONS)){
+            this.stages.get(Screen.ACTIONS).show();
+            return;
         }
+
+        var root = this.viewLoader.<Parent>load(Screen.ACTIONS.toString());
+        var scene = new Scene(root, 400, 400);
+        scene.getStylesheets().add(0, "/themes/base.css");
+        //scene.setOnKeyPressed(applicationContext.getBean(BasicKeyboardEventListener.class));
+        var stage = new Stage();
+        stage.setScene(scene);
+        stage.initOwner(this.mainStage);
+        stage.initStyle(StageStyle.DECORATED);
+        this.stages.put(Screen.ACTIONS, stage);
+        stage.show();
     }
+
 
 }
