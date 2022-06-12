@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<?import org.controlsfx.glyphfont.Glyph?>
+<ToolBar xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16"
+         stylesheets="/styles/toolbar.css" styleClass="toolbar"
+         fx:id="toolbar" fx:controller="org.dkit.fxclient.controller.ToolBarController">
+    <items>
+
+        <Button styleClass="icon-button"  onAction="#copyHandler"  fx:id="copyBtn" disable="true">
+            <graphic>
+                <FontIcon iconLiteral="fas-copy" styleClass="icon" />
+            </graphic>
+        </Button>
+
+        <Button styleClass="icon-button" onAction="#pasteHandler" fx:id="pasteBtn" disable="true">
+            <graphic>
+                <FontIcon iconLiteral="fas-paste" styleClass="icon"/>
+            </graphic>
+        </Button>
+
+        <Button styleClass="icon-button" onAction="#cutHandler" fx:id="deleteBtn" disable="true">
+            <graphic>
+                <FontIcon iconLiteral="fas-trash" styleClass="icon, delete"/>
+            </graphic>
+        </Button>
+
+        <Button styleClass="icon-button" onAction="#cutHandler" fx:id="editBtn" disable="true">
+            <graphic>
+                <FontIcon iconLiteral="fas-pen" styleClass="icon, edit"/>
+            </graphic>
+        </Button>
+
+    </items>
+</ToolBar>

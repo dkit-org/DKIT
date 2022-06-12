@@ -1,0 +1,14 @@
+
+.sidebar{
+    -fx-pref-width: 50;
+    -fx-background-color: -jr-sidebar-background;
+}
+
+.btn{
+    -fx-cursor: hand;
+    -fx-min-width: 50;
+    -fx-text-alignment: left;
+    -fx-font-size: 20;
+    -fx-background-radius: 0;
+    -fx-border-color: none;
+}

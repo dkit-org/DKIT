@@ -1,0 +1,17 @@
+
+.login{
+    -fx-padding: 20;
+    -fx-spacing: 10;
+}
+
+.input{
+    -fx-padding: 5;
+    -fx-max-width: 400;
+}
+
+.button{
+    -fx-start-margin: 10;
+    -fx-padding: 5;
+    -fx-max-width: 200;
+}
+
