@@ -1,7 +1,7 @@
 package org.dkit.fxclient.eventlistener;
 
 import org.dkit.fxclient.controller.ToolBarController;
-import org.dkit.fxclient.events.SelectionEvent;
+import org.dkit.fxclient.event.SelectionEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 

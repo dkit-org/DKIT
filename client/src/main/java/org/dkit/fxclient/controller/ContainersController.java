@@ -6,9 +6,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import lombok.RequiredArgsConstructor;
 import org.dkit.fxclient.constants.SelectionType;
-import org.dkit.fxclient.events.SelectionEvent;
-import org.dkit.fxclient.service.ContainerService;
+import org.dkit.fxclient.event.SelectionEvent;
 import org.dkit.fxclient.model.Container;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -17,18 +17,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 @Component
+@RequiredArgsConstructor
 public class ContainersController implements Initializable {
 
 
-    private TableView<Container> tableView;
-    private final ContainerService containerService;
+    //private final ContainerService containerService;
     private final ApplicationEventPublisher eventPublisher;
-    public VBox containersRoot;
 
-    public ContainersController(ContainerService containerService, ApplicationEventPublisher eventPublisher){
-        this.containerService = containerService;
-        this.eventPublisher = eventPublisher;
-    }
+    private TableView<Container> tableView;
+    public VBox containersRoot;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,7 +37,7 @@ public class ContainersController implements Initializable {
         var imageIdCol = new TableColumn<Container, String>("Image Id");
 
         this.tableView.getColumns().addAll(idCol, imageIdCol, imageNameCol);
-        this.tableView.getItems().addAll(this.containerService.getContainers());
+        //this.tableView.getItems().addAll(this.containerService.getContainers());
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         imageNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));

@@ -3,7 +3,7 @@ package org.dkit.fxclient.eventlistener;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import org.dkit.fxclient.constants.Screen;
-import org.dkit.fxclient.events.NavigationEvent;
+import org.dkit.fxclient.event.NavigationEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 

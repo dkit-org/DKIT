@@ -2,7 +2,8 @@ package org.dkit.fxclient.controller;
 
 import javafx.event.ActionEvent;
 import org.dkit.fxclient.constants.Screen;
-import org.dkit.fxclient.events.NavigationEvent;
+import org.dkit.fxclient.constants.View;
+import org.dkit.fxclient.event.NavigationEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;

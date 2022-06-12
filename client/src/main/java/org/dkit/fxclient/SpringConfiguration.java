@@ -7,9 +7,10 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ComponentScan({
+        "org.dkit.fxclient.common",
         "org.dkit.fxclient.controller",
-        "org.dkit.fxclient.eventlistener",
-        "org.dkit.fxclient.service"})
+        "org.dkit.fxclient.eventlistener"
+})
 @PropertySource("classpath:application.properties")
 public class SpringConfiguration {
 }

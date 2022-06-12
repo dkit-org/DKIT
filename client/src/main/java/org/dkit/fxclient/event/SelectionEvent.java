@@ -1,4 +1,4 @@
-package org.dkit.fxclient.events;
+package org.dkit.fxclient.event;
 
 import org.dkit.fxclient.constants.SelectionType;
 import org.springframework.context.ApplicationEvent;

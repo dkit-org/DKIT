@@ -4,48 +4,42 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import org.springframework.context.ApplicationContext;
+import lombok.RequiredArgsConstructor;
+import org.dkit.fxclient.common.ViewLoader;
+import org.dkit.fxclient.constants.View;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 @Component
+@RequiredArgsConstructor
 public class SideBarController implements Initializable {
 
     private final DashboardController mainController;
-    private final ApplicationContext applicationContext;
     private final ViewLoader viewLoader;
 
     private Button selectedButton;
 
-    public SideBarController(
-            ApplicationContext applicationContext,
-            DashboardController dashboardController, ViewLoader viewLoader){
-        this.mainController = dashboardController;
-        this.applicationContext = applicationContext;
-        this.viewLoader = viewLoader;
-    }
-    
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
     public void containerHandler(ActionEvent actionEvent) {
         this.activateButton((Button) actionEvent.getTarget());
-        var view = this.viewLoader.<Node>load("/widgets/ContainersWidget.fxml");
+        var view = this.viewLoader.<Node>load(View.CONTAINERS.toString());
         this.mainController.setMainView(view);
     }
 
     public void imagesHandler(ActionEvent actionEvent) {
         this.activateButton((Button) actionEvent.getTarget());
-        var view = this.viewLoader.<Node>load("/widgets/ImagesWidget.fxml");
+        var view = this.viewLoader.<Node>load(View.IMAGES.toString());
         this.mainController.setMainView(view);
     }
 
     public void settingsHandler(ActionEvent actionEvent) {
         this.activateButton((Button) actionEvent.getTarget());
-        var view = this.viewLoader.<Node>load("/widgets/SettingsWidget.fxml");
+        var view = this.viewLoader.<Node>load(View.SETTINGS.toString());
         this.mainController.setMainView(view);
     }
     private void activateButton(Button btn){
