@@ -1,8 +1,6 @@
-package org.dkit.domain;
+package org.dkit.persistence.entity;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 @Data
 public class ContainerEntity extends Entity<String>{

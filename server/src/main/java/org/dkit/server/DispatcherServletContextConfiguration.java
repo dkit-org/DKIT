@@ -9,5 +9,5 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @PropertySource("classpath:/application.properties")
 @EnableWebMvc
 @ComponentScan(basePackages = {"org.dkit.server.controller"})
-public class DispatcherServletContextConfig {
+public class DispatcherServletContextConfiguration {
 }

@@ -1,4 +1,4 @@
-package org.dkit.domain;
+package org.dkit.persistence.entity;
 
 import lombok.Data;
 

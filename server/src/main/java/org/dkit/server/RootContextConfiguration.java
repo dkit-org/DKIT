@@ -1,4 +1,4 @@
-package org.dkit;
+package org.dkit.server;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
@@ -12,8 +12,11 @@ import org.springframework.context.annotation.Configuration;
 import java.time.Duration;
 
 @Configuration
-@ComponentScan(basePackages = {"org.dkit.service"})
-public class ApplicationConfig {
+@ComponentScan(basePackages = {
+        "org.dkit.service",
+        "org.dkit.engineclient"
+})
+public class RootContextConfiguration {
     @Bean
     public DockerClientConfig dockerClientConfig(){
         return DefaultDockerClientConfig.createDefaultConfigBuilder().build();

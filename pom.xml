@@ -18,6 +18,9 @@
         <module>client</module>
         <module>application</module>
         <module>cli</module>
+        <module>persistence</module>
+        <module>engineclient</module>
+        <module>utils</module>
     </modules>
 
     <properties>
@@ -33,7 +36,22 @@
             <!--********************************************************************-->
             <dependency>
                 <groupId>org.dkit</groupId>
+                <artifactId>utils</artifactId>
+                <version>${parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dkit</groupId>
                 <artifactId>application</artifactId>
+                <version>${parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dkit</groupId>
+                <artifactId>engineclient</artifactId>
+                <version>${parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dkit</groupId>
+                <artifactId>persistence</artifactId>
                 <version>${parent.version}</version>
             </dependency>
 

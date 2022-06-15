@@ -8,10 +8,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import lombok.RequiredArgsConstructor;
-import org.dkit.contract.service.ImageService;
+import org.dkit.api.ImageService;
 import org.dkit.fxclient.constants.SelectionType;
 import org.dkit.fxclient.event.SelectionEvent;
-import org.dkit.fxclient.model.Container;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 

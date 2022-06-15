@@ -3,49 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>org.dkit</groupId>
         <artifactId>DKIT</artifactId>
+        <groupId>org.dkit</groupId>
         <version>0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>server</artifactId>
+    <artifactId>persistence</artifactId>
+
 
     <dependencies>
-
         <!--********************************************************************-->
-        <!-- modules -->
+        <!-- internal dependencies (modules) -->
         <!--********************************************************************-->
         <dependency>
             <groupId>org.dkit</groupId>
             <artifactId>application</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.dkit</groupId>
-            <artifactId>engineclient</artifactId>
-        </dependency>
 
         <!--********************************************************************-->
-        <!-- external -->
+        <!-- external dependencies -->
         <!--********************************************************************-->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-        </dependency>
-
     </dependencies>
+
 
 </project>
