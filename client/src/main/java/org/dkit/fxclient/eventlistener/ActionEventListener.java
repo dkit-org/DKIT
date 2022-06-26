@@ -1,6 +1,6 @@
 package org.dkit.fxclient.eventlistener;
 
-import org.dkit.fxclient.common.ViewLoader;
+import org.dkit.fxclient.core.ViewLoader;
 import org.springframework.stereotype.Component;
 
 @Component

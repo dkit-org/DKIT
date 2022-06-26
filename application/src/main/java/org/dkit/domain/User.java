@@ -1,15 +1,22 @@
 package org.dkit.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
+
+    @Getter
     private String id;
+
+    @Getter
+    @Setter
     private String userName;
+
     private List<Image> images;
     private List<Container> containers;
+    private List<Application> applications;
 }

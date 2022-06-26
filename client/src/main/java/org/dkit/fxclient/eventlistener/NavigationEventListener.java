@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lombok.RequiredArgsConstructor;
-import org.dkit.fxclient.common.ViewLoader;
+import org.dkit.fxclient.core.ViewLoader;
 import org.dkit.fxclient.constants.Screen;
 import org.dkit.fxclient.event.CloseScreenEvent;
 import org.dkit.fxclient.event.NavigationEvent;

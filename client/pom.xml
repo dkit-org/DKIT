@@ -21,6 +21,10 @@
             <groupId>org.dkit</groupId>
             <artifactId>application</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.dkit</groupId>
+            <artifactId>engineclient</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>

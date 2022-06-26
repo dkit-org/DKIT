@@ -1,28 +1,32 @@
 package org.dkit.engineclient;
 
 import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.model.Image;
 import lombok.RequiredArgsConstructor;
-import org.dkit.domain.Image;
 import org.springframework.stereotype.Component;
 
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class ImageManagerImpl implements ImageManager{
+public abstract class ImageManagerImpl{
 
     private final DockerClient dockerClient;
 
-
-    public Image createImage(org.dkit.domain.Image image) {
-        return null;
+    public Optional<String> createImage(String name, InputStream dockerFile) {
+        var response = this.dockerClient.createImageCmd(name, dockerFile).exec();
+        return Optional.of(response.getId());
     }
 
-    public Collection<Image> getImages(){
+    public void downloadImage(String imageNameAndId){
+        this.dockerClient.pullImageCmd(imageNameAndId);
+    }
+
+    public List<org.dkit.domain.Image> getImages(){
         var images = this.dockerClient.listImagesCmd().exec();
-        // TODO : conver docker-java images to domain.image
         return new ArrayList<>();
     }
 
@@ -33,10 +37,10 @@ public class ImageManagerImpl implements ImageManager{
                 .filter(el -> el.getId().equals(imageId))
                 .findFirst();
         // TODO : conver docker-java images to domain.image
-        return Optional.of(new Image("fake id", "fake name"));
+        return Optional.empty();
     }
 
-    public Collection<Image> getImageByName(final String imageName){
+    public List<Image> getImageByName(final String imageName){
         var images =  this.dockerClient.listImagesCmd()
                 .withImageNameFilter(imageName)
                 .exec();

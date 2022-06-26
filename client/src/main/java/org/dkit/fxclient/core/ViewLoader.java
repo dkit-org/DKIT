@@ -1,4 +1,4 @@
-package org.dkit.fxclient.common;
+package org.dkit.fxclient.core;
 
 import javafx.fxml.FXMLLoader;
 import org.springframework.context.ApplicationContext;

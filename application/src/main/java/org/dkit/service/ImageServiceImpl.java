@@ -5,6 +5,7 @@ import org.dkit.domain.Image;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,7 +17,7 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public Collection<Image> getImages() {
+    public List<Image> getImages() {
         return null;
     }
 
@@ -26,7 +27,7 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public Collection<Image> getImageByName(String imageName) {
+    public List<Image> getImageByName(String imageName) {
         return null;
     }
 }

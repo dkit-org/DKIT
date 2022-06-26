@@ -5,7 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import lombok.RequiredArgsConstructor;
-import org.dkit.fxclient.common.ViewLoader;
+import org.dkit.fxclient.core.ViewLoader;
 import org.dkit.fxclient.constants.View;
 import org.springframework.stereotype.Component;
 
