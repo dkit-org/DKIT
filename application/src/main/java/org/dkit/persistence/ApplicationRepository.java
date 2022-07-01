@@ -1,4 +1,6 @@
 package org.dkit.persistence;
 
-public interface ApplicationRepository {
+import org.dkit.domain.Application;
+
+public interface ApplicationRepository extends Repository<Application, String> {
 }

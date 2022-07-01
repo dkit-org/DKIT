@@ -1,19 +1,23 @@
-package org.dkit.service;
+package org.dkit.internal.service;
 
+import lombok.RequiredArgsConstructor;
 import org.dkit.api.ImageService;
 import org.dkit.domain.Image;
+import org.dkit.engineclient.ImageManager;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ImageServiceImpl implements ImageService {
 
+    private final ImageManager imageManager;
+
     @Override
-    public Image createImage(Image image) {
-        return null;
+    public Optional<Image> createImage(Image image) {
+        return this.imageManager.createImage(image);
     }
 
     @Override

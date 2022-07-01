@@ -1,4 +1,4 @@
-package org.dkit.service;
+package org.dkit.internal.service;
 
 import lombok.Setter;
 import org.dkit.api.ContainerService;

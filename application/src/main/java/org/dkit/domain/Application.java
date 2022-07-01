@@ -17,22 +17,23 @@ public class Application {
 
     @Getter
     private final String id;
+
     @Getter
     @Setter
     private final String name;
-    public void add(Container container) {
+    public void addContainer(Container container) {
         this.list.add(container);
     }
 
-    public void add(Container... containers) {
+    public void addContainer(Container... containers) {
         this.list.addAll(Arrays.asList(containers));
     }
 
-    public void remove(Container container) {
+    public void removeContainer(Container container) {
         this.list.remove(container);
     }
 
-    public Collection<Container> get(){
+    public Collection<Container> getAllContainers(){
         return this.list.parallelStream().toList();
     }
 }

@@ -1,18 +1,18 @@
 package org.dkit.engineclient;
 
 import org.dkit.domain.Image;
+import org.dkit.domain.valueobject.ImageName;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
 public interface ImageManager {
+    String createImage(String name, InputStream dockerFile);
+    void pullImage(ImageName imageName);
     Optional<Image> getImageById(String id);
     List<Image> getImages();
     List<Image> getImageByName(String name);
-
-    Optional<Image> createImage(String name, String tag);
-
-    //Optional<Image> createImage(String name, String tag, );
 
     void deleteImage(String id);
 }

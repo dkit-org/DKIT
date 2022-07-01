@@ -1,4 +1,6 @@
 package org.dkit.persistence;
 
-public interface ContainerRepository {
+import org.dkit.domain.Container;
+
+public interface ContainerRepository extends Repository<Container, String> {
 }
