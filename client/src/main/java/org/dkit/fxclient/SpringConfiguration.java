@@ -15,8 +15,14 @@ import java.time.Duration;
 
 @Configuration
 @ComponentScan({
+        // application
         "org.dkit.service",
-        "org.dkit.engineclient",
+
+        // engine
+        "org.dkit.engineclient.image",
+        "org.dkit.engineclient.container",
+
+        // fx client
         "org.dkit.fxclient.core",
         "org.dkit.fxclient.controller",
         "org.dkit.fxclient.eventlistener",

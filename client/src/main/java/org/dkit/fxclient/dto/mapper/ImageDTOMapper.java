@@ -8,7 +8,10 @@ import org.springframework.stereotype.Component;
 public class ImageDTOMapper extends AbstractMapper<Image, ImageDTO> {
     @Override
     public ImageDTO mapToDTO(final Image image) {
-        return new ImageDTO();
+        return new ImageDTO(
+                image.getId(),
+                image.getName().getName(),
+                image.getName().getTag());
     }
 
     @Override

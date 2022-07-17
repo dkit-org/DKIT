@@ -1,8 +1,8 @@
-package org.dkit.engineclient;
+package org.dkit.engineclient.container;
 
 import com.github.dockerjava.api.DockerClient;
-import com.github.dockerjava.api.model.Frame;
 import lombok.RequiredArgsConstructor;
+import org.dkit.contract.engineclient.ContainerManager;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class ContainerManagerImpl implements ContainerManager {
 
     private final DockerClient dockerClient;
+    private final ContainerLogCallback containerLogCallback;
 
     public String createContainer(org.dkit.domain.valueobject.ImageName imageName){
         return this.dockerClient.createContainerCmd(imageName.toString())
@@ -39,7 +40,6 @@ public class ContainerManagerImpl implements ContainerManager {
     }
 
     public void showLogs(String containerId){
-        this.dockerClient.logContainerCmd(containerId).exec().onNext(Frame);
+        this.dockerClient.logContainerCmd(containerId).exec(this.containerLogCallback);
     }
-
 }

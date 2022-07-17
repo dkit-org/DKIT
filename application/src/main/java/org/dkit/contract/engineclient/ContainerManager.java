@@ -1,4 +1,4 @@
-package org.dkit.engineclient;
+package org.dkit.contract.engineclient;
 
 import org.dkit.domain.Container;
 

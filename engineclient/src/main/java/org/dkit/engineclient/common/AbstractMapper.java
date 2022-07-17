@@ -1,7 +1,6 @@
-package org.dkit.engineclient.mapper;
+package org.dkit.engineclient.common;
 
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

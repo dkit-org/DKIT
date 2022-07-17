@@ -1,11 +1,12 @@
-package org.dkit.internal.service;
+package org.dkit.service;
 
 import lombok.RequiredArgsConstructor;
 import org.dkit.api.ImageService;
 import org.dkit.domain.Image;
-import org.dkit.engineclient.ImageManager;
+import org.dkit.contract.engineclient.ImageManager;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,22 +17,25 @@ public class ImageServiceImpl implements ImageService {
     private final ImageManager imageManager;
 
     @Override
-    public Optional<Image> createImage(Image image) {
-        return this.imageManager.createImage(image);
+    public Optional<String> createImage(
+            final String imageName,
+            final InputStream dockerFile
+            ) {
+        return this.imageManager.createImage(imageName, dockerFile);
     }
 
     @Override
     public List<Image> getImages() {
-        return null;
+        return this.imageManager.getImages();
     }
 
     @Override
     public Optional<Image> getImageById(String imageId) {
-        return Optional.empty();
+        return this.getImageById(imageId);
     }
 
     @Override
     public List<Image> getImageByName(String imageName) {
-        return null;
+        return this.imageManager.getImageByName(imageName);
     }
 }

@@ -1,4 +1,4 @@
-package org.dkit.internal.service;
+package org.dkit.service;
 
 import org.dkit.domain.Application;
 import org.dkit.domain.Container;

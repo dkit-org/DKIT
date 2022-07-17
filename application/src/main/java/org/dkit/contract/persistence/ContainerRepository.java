@@ -1,4 +1,4 @@
-package org.dkit.persistence;
+package org.dkit.contract.persistence;
 
 import org.dkit.domain.Container;
 

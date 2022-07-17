@@ -1,9 +1,9 @@
-package org.dkit.engineclient;
+package org.dkit.engineclient.image;
 
 import com.github.dockerjava.api.DockerClient;
 import lombok.RequiredArgsConstructor;
+import org.dkit.contract.engineclient.ImageManager;
 import org.dkit.domain.valueobject.ImageName;
-import org.dkit.engineclient.mapper.ImageMapper;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -19,9 +19,9 @@ public class ImageManagerImpl implements ImageManager {
     private final ImageMapper imageMapper;
 
     @Override
-    public String createImage(String name, InputStream dockerFile) {
+    public Optional<String> createImage(String name, InputStream dockerFile) {
         var response = this.dockerClient.createImageCmd(name, dockerFile).exec();
-        return response.getId();
+        return Optional.of(response.getId());
     }
 
 
@@ -55,7 +55,7 @@ public class ImageManagerImpl implements ImageManager {
     }
 
     @Override
-    public void deleteImage(String imageId) {
+    public void removeImage(String imageId) {
         this.dockerClient.removeImageCmd(imageId).exec();
     }
 }

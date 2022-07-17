@@ -1,11 +1,14 @@
 package org.dkit.domain.valueobject;
 
+import lombok.Getter;
+
 import javax.naming.InvalidNameException;
 
 /**
  * ImageName represents the combination of
  * the image name and the image tag
  */
+@Getter
 public class ImageName {
     private final String name;
     private String tag = "latest";

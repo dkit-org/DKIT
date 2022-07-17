@@ -37,12 +37,14 @@ public class ImagesController implements Initializable {
 
         var imageIdCol = new TableColumn<ImageDTO, String>("Image Id");
         var imageNameCol = new TableColumn<ImageDTO, String>("Image Name");
+        var imageTagCol = new TableColumn<ImageDTO, String>("Image Tag");
 
         this.tableView.getColumns().addAll(imageIdCol, imageNameCol);
         this.tableView.getItems().addAll(this.getImages());
 
         imageIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        imageNameCol.setCellValueFactory(new PropertyValueFactory<>("parentId"));
+        imageNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        imageNameCol.setCellValueFactory(new PropertyValueFactory<>("tag"));
 
         this.tableView.getSelectionModel().selectedItemProperty().addListener((observableValue, preValue, newValue) -> {
             var count = this.tableView.getSelectionModel().getSelectedItems().size();
