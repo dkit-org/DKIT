@@ -2,7 +2,7 @@ package org.dkit.service;
 
 import lombok.RequiredArgsConstructor;
 import org.dkit.api.ImageService;
-import org.dkit.domain.Image;
+import org.dkit.entity.Image;
 import org.dkit.contract.engineclient.ImageManager;
 import org.springframework.stereotype.Service;
 

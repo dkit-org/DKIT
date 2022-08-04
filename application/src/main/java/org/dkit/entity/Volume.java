@@ -1,10 +1,10 @@
-package org.dkit.domain;
+package org.dkit.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.dkit.domain.valueobject.VolumeType;
+import org.dkit.entity.valueobject.VolumeType;
 
 import java.util.List;
 

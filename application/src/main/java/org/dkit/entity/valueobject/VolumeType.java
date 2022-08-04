@@ -1,4 +1,4 @@
-package org.dkit.domain.valueobject;
+package org.dkit.entity.valueobject;
 
 
 /**

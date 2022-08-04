@@ -1,6 +1,6 @@
 package org.dkit.fxclient.dto.mapper;
 
-import org.dkit.domain.Container;
+import org.dkit.entity.Container;
 import org.dkit.fxclient.dto.ContainerDTO;
 import org.springframework.stereotype.Component;
 

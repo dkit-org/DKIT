@@ -1,7 +1,7 @@
 package org.dkit.api;
 
 
-import org.dkit.domain.Image;
+import org.dkit.entity.Image;
 
 import java.io.InputStream;
 import java.util.List;

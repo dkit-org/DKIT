@@ -1,7 +1,7 @@
 package org.dkit.contract.engineclient;
 
-import org.dkit.domain.Image;
-import org.dkit.domain.valueobject.ImageName;
+import org.dkit.entity.Image;
+import org.dkit.entity.valueobject.ImageName;
 
 import java.io.InputStream;
 import java.util.List;

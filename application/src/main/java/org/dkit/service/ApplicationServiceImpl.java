@@ -1,7 +1,7 @@
 package org.dkit.service;
 
-import org.dkit.domain.Application;
-import org.dkit.domain.Container;
+import org.dkit.entity.Application;
+import org.dkit.entity.Container;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

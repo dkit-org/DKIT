@@ -1,8 +1,6 @@
-package org.dkit.domain;
+package org.dkit.entity;
 
 import lombok.*;
-
-import java.util.Set;
 
 @Getter
 @RequiredArgsConstructor

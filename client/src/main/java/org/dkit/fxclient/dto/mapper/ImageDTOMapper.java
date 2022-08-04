@@ -1,6 +1,6 @@
 package org.dkit.fxclient.dto.mapper;
 
-import org.dkit.domain.Image;
+import org.dkit.entity.Image;
 import org.dkit.fxclient.dto.ImageDTO;
 import org.springframework.stereotype.Component;
 

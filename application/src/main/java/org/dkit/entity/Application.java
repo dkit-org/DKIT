@@ -1,4 +1,4 @@
-package org.dkit.domain;
+package org.dkit.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -12,15 +12,16 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class Application {
 
+    @Getter
+    private final String id;
 
     private Set<Container> list = new HashSet<>();
 
-    @Getter
-    private final String id;
 
     @Getter
     @Setter
     private final String name;
+
     public void addContainer(Container container) {
         this.list.add(container);
     }

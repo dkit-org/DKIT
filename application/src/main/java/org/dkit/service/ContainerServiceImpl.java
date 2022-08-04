@@ -1,9 +1,7 @@
 package org.dkit.service;
 
-import lombok.Setter;
 import org.dkit.api.ContainerService;
-import org.dkit.domain.Container;
-import org.dkit.domain.valueobject.Status;
+import org.dkit.entity.Container;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

@@ -3,7 +3,7 @@ package org.dkit.engineclient.image;
 import com.github.dockerjava.api.DockerClient;
 import lombok.RequiredArgsConstructor;
 import org.dkit.contract.engineclient.ImageManager;
-import org.dkit.domain.valueobject.ImageName;
+import org.dkit.entity.valueobject.ImageName;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -29,14 +29,14 @@ public class ImageManagerImpl implements ImageManager {
         this.dockerClient.pullImageCmd(imageName.toString());
     }
 
-    public List<org.dkit.domain.Image> getImages() {
+    public List<org.dkit.entity.Image> getImages() {
         return this.dockerClient.listImagesCmd().exec()
                 .stream()
                 .map(this.imageMapper::mapFromEngineType)
                 .collect(Collectors.toList());
     }
 
-    public Optional<org.dkit.domain.Image> getImageById(final String imageId) {
+    public Optional<org.dkit.entity.Image> getImageById(final String imageId) {
         return this.dockerClient.listImagesCmd()
                 .exec()
                 .stream()
@@ -45,7 +45,7 @@ public class ImageManagerImpl implements ImageManager {
                 .map(this.imageMapper::mapFromEngineType);
     }
 
-    public List<org.dkit.domain.Image> getImageByName(final String imageName) {
+    public List<org.dkit.entity.Image> getImageByName(final String imageName) {
         return this.dockerClient.listImagesCmd()
                 .withImageNameFilter(imageName)
                 .exec()

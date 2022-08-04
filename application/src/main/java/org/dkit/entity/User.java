@@ -1,4 +1,4 @@
-package org.dkit.domain;
+package org.dkit.entity;
 
 import lombok.*;
 

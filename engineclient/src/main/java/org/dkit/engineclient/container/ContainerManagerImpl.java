@@ -12,13 +12,13 @@ public class ContainerManagerImpl implements ContainerManager {
     private final DockerClient dockerClient;
     private final ContainerLogCallback containerLogCallback;
 
-    public String createContainer(org.dkit.domain.valueobject.ImageName imageName){
+    public String createContainer(org.dkit.entity.valueobject.ImageName imageName){
         return this.dockerClient.createContainerCmd(imageName.toString())
                 .exec()
                 .getId();
     }
 
-    public String createContainer(org.dkit.domain.Image image){
+    public String createContainer(org.dkit.entity.Image image){
         return this.dockerClient.createContainerCmd(image.getName().toString())
                 .exec().getId();
     }

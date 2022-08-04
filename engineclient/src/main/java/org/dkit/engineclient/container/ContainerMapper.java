@@ -6,14 +6,14 @@ import org.dkit.engineclient.common.AbstractMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ContainerMapper extends AbstractMapper<org.dkit.domain.Container, Container> {
+public class ContainerMapper extends AbstractMapper<org.dkit.entity.Container, Container> {
     @Override
-    public Container mapToEngineType(org.dkit.domain.Container container) {
+    public Container mapToEngineType(org.dkit.entity.Container container) {
         return null;
     }
 
     @Override
-    public org.dkit.domain.Container mapFromEngineType(Container typeDTO) {
+    public org.dkit.entity.Container mapFromEngineType(Container typeDTO) {
         return null;
     }
 }

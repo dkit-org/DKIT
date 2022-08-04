@@ -1,16 +1,12 @@
-package org.dkit.domain;
+package org.dkit.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.dkit.domain.valueobject.Status;
+import lombok.*;
+import org.dkit.entity.valueobject.Status;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Container {
-    private String id;
+    private final String id;
     @Setter
     private String name;
     @Setter
