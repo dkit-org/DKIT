@@ -14,13 +14,13 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>server</module>
-        <module>client</module>
-        <module>application</module>
-        <module>cli</module>
-        <module>persistence</module>
-        <module>engineclient</module>
-        <module>utils</module>
+        <module>modules/server</module>
+        <module>modules/client</module>
+        <module>modules/application</module>
+        <module>modules/cli</module>
+        <module>modules/persistence</module>
+        <module>modules/engineclient</module>
+        <module>modules/utils</module>
     </modules>
 
     <properties>
@@ -88,11 +88,17 @@
                 <artifactId>hibernate-entitymanager</artifactId>
                 <version>5.6.8.Final</version>
             </dependency>
-            <!-- TODO: check if this correct -->
+
             <dependency>
                 <groupId>jakarta.persistence</groupId>
                 <artifactId>jakarta.persistence-api</artifactId>
                 <version>2.2.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-core</artifactId>
+                <version>4.15.0</version>
             </dependency>
 
 
@@ -172,6 +178,42 @@
                         <source>${java.version}</source>
                         <target>${java.version}</target>
                     </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.2.2</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.3.2</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.4.1</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.github.akman</groupId>
+                    <artifactId>jpackage-maven-plugin</artifactId>
+                    <version>0.1.5</version>
                 </plugin>
             </plugins>
         </pluginManagement>
