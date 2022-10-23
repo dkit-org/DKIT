@@ -14,11 +14,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>modules/server</module>
+        <!--<module>modules/server</module>-->
         <module>modules/client</module>
         <module>modules/application</module>
-        <module>modules/cli</module>
-        <module>modules/persistence</module>
+        <!--<module>modules/cli</module>-->
+        <!--<module>modules/persistence</module>-->
         <module>modules/engineclient</module>
         <module>modules/utils</module>
     </modules>
@@ -162,6 +162,12 @@
                 <artifactId>lombok</artifactId>
                 <version>1.18.24</version>
                 <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>net.raumzeitfalle.fx</groupId>
+                <artifactId>scenic-view</artifactId>
+                <version>11.0.2</version>
             </dependency>
         </dependencies>
 

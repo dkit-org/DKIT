@@ -87,27 +87,27 @@
 
 
 
-    <profiles>
-        <profile>
-            <id>release-profile</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <property>
-                    <name>mode</name>
-                    <value>release</value>
-                </property>
-            </activation>
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>release-profile</id>-->
+<!--            <activation>-->
+<!--                <activeByDefault>false</activeByDefault>-->
+<!--                <property>-->
+<!--                    <name>mode</name>-->
+<!--                    <value>release</value>-->
+<!--                </property>-->
+<!--            </activation>-->
 
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.github.akman</groupId>
-                        <artifactId>jpackage-maven-plugin</artifactId>
-                        <!-- TODO: add jpackage configuration-->
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+<!--            <build>-->
+<!--                <plugins>-->
+<!--                    <plugin>-->
+<!--                        <groupId>com.github.akman</groupId>-->
+<!--                        <artifactId>jpackage-maven-plugin</artifactId>-->
+<!--                        &lt;!&ndash; TODO: add jpackage configuration&ndash;&gt;-->
+<!--                    </plugin>-->
+<!--                </plugins>-->
+<!--            </build>-->
+<!--        </profile>-->
+<!--    </profiles>-->
 
 </project>
