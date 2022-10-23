@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import org.kordamp.ikonli.javafx.*?>
-
-<?import org.controlsfx.glyphfont.Glyph?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import org.controlsfx.control.textfield.TextFields?>
 <ToolBar xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16"
          stylesheets="/styles/toolbar.css" styleClass="toolbar"
          fx:id="toolbar" fx:controller="org.dkit.fxclient.controller.ToolBarController">
     <items>
 
-        <Button styleClass="icon-button"  onAction="#copyHandler"  fx:id="copyBtn" disable="true">
+        <Button styleClass="icon-button" onAction="#copyHandler" fx:id="copyBtn" disable="true">
             <graphic>
-                <FontIcon iconLiteral="fas-copy" styleClass="icon" />
+                <FontIcon iconLiteral="fas-copy" styleClass="icon"/>
             </graphic>
         </Button>
 
@@ -33,5 +32,7 @@
             </graphic>
         </Button>
 
+        <!--TODO align search field to the right-->
+        <TextFields fx:factory="createClearableTextField" />
     </items>
 </ToolBar>

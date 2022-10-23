@@ -2,6 +2,7 @@ package org.dkit.fxclient.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,8 +11,9 @@ public class ToolBarController {
     public Button pasteBtn;
     public Button deleteBtn;
     public Button editBtn;
+    public TextField search;
 
-    public void copyHandler(ActionEvent actionEvent) {
+	public void copyHandler(ActionEvent actionEvent) {
         System.out.println("copy");
     }
 
