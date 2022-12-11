@@ -6,17 +6,17 @@ public class NavigationEvent extends ApplicationEvent {
 
 	private Route route;
 
-	public NavigationEvent(int routeId) {
+	public NavigationEvent(final String routeId) {
 		super(routeId);
 	}
 
-	public NavigationEvent(int routeId, Route route){
+	public NavigationEvent(final String routeId, Route route){
 		super(routeId);
 		this.route = route;
 	}
 
-	public int getRouteId(){
-		return (int) this.source;
+	public String getRouteId(){
+		return (String) this.source;
 	}
 
 	public Route getRoute(){

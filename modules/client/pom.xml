@@ -14,9 +14,16 @@
     <properties>
         <javafx.version>18.0.1</javafx.version>
         <ikonli.version>12.3.1</ikonli.version>
+        <micronaut.versoin>3.7.0</micronaut.versoin>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-inject</artifactId>
+            <version>${micronaut.versoin}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.dkit</groupId>
@@ -86,33 +93,43 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <path>
+                                <groupId>io.micronaut</groupId>
+                                <artifactId>micronaut-inject-java</artifactId>
+                                <version>${micronaut.version}</version>
+                            </path>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
         </plugins>
     </build>
 
 
+    <!--TODO: replace with maven distribute plugin-->
 
-<!--    <profiles>-->
-<!--        <profile>-->
-<!--            <id>release-profile</id>-->
-<!--            <activation>-->
-<!--                <activeByDefault>false</activeByDefault>-->
-<!--                <property>-->
-<!--                    <name>mode</name>-->
-<!--                    <value>release</value>-->
-<!--                </property>-->
-<!--            </activation>-->
-
-<!--            <build>-->
-<!--                <plugins>-->
-<!--                    <plugin>-->
-<!--                        <groupId>com.github.akman</groupId>-->
-<!--                        <artifactId>jpackage-maven-plugin</artifactId>-->
-<!--                        &lt;!&ndash; TODO: add jpackage configuration&ndash;&gt;-->
-<!--                    </plugin>-->
-<!--                </plugins>-->
-<!--            </build>-->
-<!--        </profile>-->
-<!--    </profiles>-->
+    <!--    <profiles>-->
+    <!--        <profile>-->
+    <!--            <id>release-profile</id>-->
+    <!--            <activation>-->
+    <!--                <activeByDefault>false</activeByDefault>-->
+    <!--                <property>-->
+    <!--                    <name>mode</name>-->
+    <!--                    <value>release</value>-->
+    <!--                </property>-->
+    <!--            </activation>-->
+    <!--            <build>-->
+    <!--                <plugins>-->
+    <!--                    <plugin>-->
+    <!--                        <groupId>com.github.akman</groupId>-->
+    <!--                        <artifactId>jpackage-maven-plugin</artifactId>-->
+    <!--                    </plugin>-->
+    <!--                </plugins>-->
+    <!--            </build>-->
+    <!--        </profile>-->
+    <!--    </profiles>-->
 
 </project>

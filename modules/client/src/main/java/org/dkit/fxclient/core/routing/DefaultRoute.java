@@ -11,7 +11,7 @@ import java.util.Optional;
 class DefaultRoute implements Route{
 
 	@Getter
-	private final int id;
+	private final String id;
 
 	@Getter
 	private final String name;

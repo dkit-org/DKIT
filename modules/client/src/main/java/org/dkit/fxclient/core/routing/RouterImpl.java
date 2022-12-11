@@ -16,12 +16,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+
 class RouterImpl implements Router, ApplicationListener<NavigationEvent> {
 
 	private static final Logger LOG = LogManager.getLogger(RouterImpl.class);
 
 	private final ApplicationContext applicationContext;
-	private final Map<Integer, Route> routes = new HashMap<>();
+	private final Map<String, Route> routes = new HashMap<>();
+	private String viewPrefix = "/";
 	private final Stage primaryStage;
 	private final Scene primaryScene;
 
@@ -36,16 +38,16 @@ class RouterImpl implements Router, ApplicationListener<NavigationEvent> {
 		// navigate to default page
 	}
 
-	public void navigate(int routeId){
+	public void navigate(final String routeId){
 		//this.primaryScene
 	}
 
-	public void registerRoute(int routeId, Route route){
+	public void registerRoute(final String routeId, Route route){
 		LOG.trace("register route with route id: {}", routeId);
 		this.routes.put(routeId, route);
 	}
 
-	public void registerChildRoute(int routeId, Route route){
+	public void registerChildRoute(final String routeId, Route route){
 		if(route.getParentRoute().isEmpty()){
 			LOG.trace("could no register child route {}. child route must contain parent route to ba registered", routeId);
 			return;
@@ -54,24 +56,12 @@ class RouterImpl implements Router, ApplicationListener<NavigationEvent> {
 		LOG.trace("register child route({}) for the route({})", routeId, route.getParentRoute().get().getId());
 		this.routes.put(routeId, route);
 	}
-	public void unregisterRoute(int routeId){
+	public void unregisterRoute(final String routeId){
 		LOG.trace("unregister route with route id: {}", routeId);
 		this.routes.remove(routeId);
 	}
 
 
-	private  <T> T loadView(final String path){
-		try {
-			LOG.trace("loading FXML view '{}'", path);
-			var url = new ClassPathResource(path).getURL();
-			var loader = new FXMLLoader(url);
-			loader.setControllerFactory(this.applicationContext::getBean);
-			return loader.<T>load();
-		} catch (IOException e) {
-			LOG.error("could not load FXML view '{}'", path);
-			throw new RuntimeException(e);
-		}
-	}
 
 	@Override
 	public void onApplicationEvent(NavigationEvent event) {
@@ -105,6 +95,38 @@ class RouterImpl implements Router, ApplicationListener<NavigationEvent> {
 
 		}else {
 			LOG.error("navigation is not possible");
+		}
+	}
+
+
+	// ***********************************************************
+	// *******      Getters And Setters
+	// ***********************************************************
+
+	public String getViewPrefix(){
+		return this.viewPrefix;
+	}
+
+	public void setViewPrefix(final String viewPrefix){
+		this.viewPrefix = viewPrefix;
+	}
+
+
+
+	// ***********************************************************
+	// *******     Internal API
+	// ***********************************************************
+
+	private  <T> T loadView(final String view){
+		try {
+			LOG.trace("loading FXML view '{}'", view);
+			var url = new ClassPathResource(view).getURL();
+			var loader = new FXMLLoader(url);
+			loader.setControllerFactory(this.applicationContext::getBean);
+			return loader.<T>load();
+		} catch (IOException e) {
+			LOG.error("could not load FXML view '{}'", view);
+			throw new RuntimeException(e);
 		}
 	}
 }
