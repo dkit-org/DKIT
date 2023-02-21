@@ -51,7 +51,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.dkit.cli.Main</mainClass>
+                            <mainClass>org.dkit.cli.org.codingmiracles.apikit.org.dkit.fxclient.Main</mainClass>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
                     </archive>
@@ -97,7 +97,7 @@
             <!--    <configuration>-->
             <!--        <programs>-->
             <!--            <program>-->
-            <!--                <mainClass>org.dkit.cli.Main</mainClass>-->
+            <!--                <mainClass>org.dkit.cli.org.codingmiracles.apikit.org.dkit.fxclient.Main</mainClass>-->
             <!--                <id>app</id>-->
             <!--            </program>-->
             <!--        </programs>-->
