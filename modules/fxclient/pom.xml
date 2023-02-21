@@ -13,8 +13,8 @@
     <artifactId>fxclient</artifactId>
 
     <properties>
-        <java.vesion>17</java.vesion>
-        <jfx.vesion>17</jfx.vesion>
+        <java.vesion>11</java.vesion>
+        <jfx.vesion>11</jfx.vesion>
         <controlsfx.version>11.1.1</controlsfx.version>
         <micronaut.version>3.8.3</micronaut.version>
     </properties>
@@ -42,6 +42,12 @@
             <groupId>io.github.mkpaz</groupId>
             <artifactId>atlantafx-base</artifactId>
             <version>1.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.1.214</version>
         </dependency>
     </dependencies>
 
